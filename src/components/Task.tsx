@@ -10,28 +10,30 @@ import classNames from "classnames";
 import { useState } from "react";
 
 type TaskProps = {
+  id: string;
   name: string;
+  handleOnTaskDelete: (taskId: string) => void;
 };
 
-const Task = ({ name }: TaskProps) => {
+const Task = ({ id, name, handleOnTaskDelete }: TaskProps) => {
   const [checked, setChecked] = useState(false);
 
   return (
     <div
       className={classNames(
-        "grid",
+        "flex",
         "items-center",
-        "grid-cols-10",
         "text-xl",
         "text-left",
+        "py-2",
         { "line-through": checked, "text-gray-400": checked },
       )}
     >
-      <div className="col-span-1 cursor-pointer checked" onClick={() => setChecked(prev => !prev)}>
+      <div className="cursor-pointer checked" onClick={() => setChecked(prev => !prev)}>
         <FontAwesomeIcon icon={checked ? faSquareCheck : faSquare} />
       </div>
-      <div className="col-span-8 name">{name}</div>
-      <div className="col-span-1 cursor-pointer delete">
+      <div className="px-6 name">{name}</div>
+      <div className="flex-1 text-right cursor-pointer delete" onClick={() => handleOnTaskDelete(id)}>
         <FontAwesomeIcon icon={faClose} />
       </div>
     </div>

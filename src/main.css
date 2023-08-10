@@ -9,5 +9,5 @@
 }
 
 .container {
-  @apply px-20 py-10 text-center flex justify-center items-center min-w-full;
+  @apply flex items-center justify-center min-w-full py-10 text-center md:px-20;
 }
