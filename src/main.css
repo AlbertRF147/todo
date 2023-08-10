@@ -8,6 +8,14 @@
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
+html, body {
+  background-color: aliceblue;
+}
+
 .container {
   @apply flex items-center justify-center min-w-full py-10 text-center md:px-20;
+}
+
+.button {
+  @apply bg-white border border-solid rounded-md cursor-pointer whitespace-nowrap hover:bg-black hover:text-white;
 }

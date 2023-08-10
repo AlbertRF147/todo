@@ -23,6 +23,9 @@ export default function TaskInput({
     <div className="block w-2/3 mx-auto">
       <div className="grid grid-cols-1 px-12 mt-10">
         <div className="flex items-center wrapper">
+          <div className="px-3 py-2 mr-2 text-xl button">
+            Help me! 🍀
+          </div>
           <input
             type="text"
             name="task-input"
@@ -33,7 +36,7 @@ export default function TaskInput({
             className="w-full h-full p-2 border border-solid rounded-md"
           />
           <div
-            className="px-3 py-2 mx-2 text-2xl bg-white border border-solid rounded-md cursor-pointer hover:bg-black hover:text-white add-task"
+            className="px-3 py-2 mx-2 text-2xl button add-task"
             onClick={handleOnTaskInput}
           >
             <FontAwesomeIcon icon={faPlus} />
