@@ -1,5 +1,7 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { Spinner } from "./Spinner";
 
 interface ITaskInput {
   taskName: string;
@@ -12,6 +14,8 @@ export default function TaskInput({
   setTaskName,
   handleOnTaskInput,
 }: ITaskInput) {
+  const [loadingIdeas, setLoadingIdeas] = useState(false);
+
   const handleOnInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       currentTarget: { value },
@@ -19,12 +23,26 @@ export default function TaskInput({
     setTaskName(value);
   };
 
+  const handleOnHelpMeClick = async () => {
+    setLoadingIdeas(true);
+
+    const response = await fetch("/api/handler");
+    if (response.ok) {
+      const { idea } = await response.json();
+      setLoadingIdeas(false);
+      if (idea) setTaskName(idea);
+    }
+  };
+
   return (
     <div className="block w-2/3 mx-auto">
       <div className="grid grid-cols-1 px-12 mt-10">
         <div className="flex items-center wrapper">
-          <div className="px-3 py-2 mr-2 text-xl button">
-            Help me! 🍀
+          <div
+            className="px-3 py-2 mr-2 text-xl button"
+            onClick={handleOnHelpMeClick}
+          >
+            {loadingIdeas ? <Spinner /> : <>Help me! 🍀</>}
           </div>
           <input
             type="text"

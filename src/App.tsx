@@ -20,7 +20,7 @@ function App() {
   const [tasks, setTasks] = useState<ITask[]>([defaultTask]);
 
   const handleOnTaskInput = () => {
-    if (!taskName) return
+    if (!taskName) return;
 
     setTasks((tasks) => [
       ...tasks,

@@ -1,10 +1,5 @@
-import {
-  faSquare,
-} from "@fortawesome/free-regular-svg-icons";
-import {
-  faClose,
-  faSquareCheck,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSquare } from "@fortawesome/free-regular-svg-icons";
+import { faClose, faSquareCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useState } from "react";
@@ -29,11 +24,17 @@ const Task = ({ id, name, handleOnTaskDelete }: TaskProps) => {
         { "line-through": checked, "text-gray-400": checked },
       )}
     >
-      <div className="cursor-pointer checked" onClick={() => setChecked(prev => !prev)}>
+      <div
+        className="cursor-pointer checked"
+        onClick={() => setChecked((prev) => !prev)}
+      >
         <FontAwesomeIcon icon={checked ? faSquareCheck : faSquare} />
       </div>
       <div className="px-6 name">{name}</div>
-      <div className="flex-1 text-right cursor-pointer delete" onClick={() => handleOnTaskDelete(id)}>
+      <div
+        className="flex-1 text-right cursor-pointer delete"
+        onClick={() => handleOnTaskDelete(id)}
+      >
         <FontAwesomeIcon icon={faClose} />
       </div>
     </div>
